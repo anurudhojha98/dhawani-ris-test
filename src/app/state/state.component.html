@@ -1,0 +1,54 @@
+<div fxLayout="row wrap">
+    <div style="padding-left: 100px;padding-top: 30px;">
+        <mat-card class="example-card">
+            <mat-card-content>
+                <div>
+                    <div class="example-button-container">
+                        <button mat-fab disabled aria-label="Example icon" style="width: 70px;height: 70px;">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                    <div style="padding-left: 150px;">
+                        <form class="example-form" [formGroup]="addStateForm" (ngSubmit)="addState()">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Enter State Name</mat-label>
+                                <input matInput formControlName="stateName" placeholder="State name" required>
+                            </mat-form-field>
+                        </form>
+                        <button mat-raised-button color="primary" type="submit" aria-label="Add" class="submitBtn"
+                            [disabled]="!addStateForm.valid" (click)="addState()">
+                            Add State
+                        </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div style="padding-left: 100px;padding-top: 30px;" *ngFor='let state of statesList,let i= index'>
+        <mat-card class="example-card">
+            <mat-card-content>
+                <div fxLayout="row">
+                    <div class="" fxFlex="100%" fxLayoutGap="10px">
+                        <div fxFlex="33%">
+                            <div class="example-button-container">
+                                <button mat-fab disabled aria-label="Example icon" style="width: 70px;height: 70px;">
+                                    {{i+1}}
+                                </button>
+                            </div>
+                        </div>
+                        <div fxFlex="33%">
+                            <h4 style="margin-left: 10px;margin-top: 30px;">{{state.stateName}}</h4>
+                        </div>
+                        <div fxFlex="33%">
+                            <div>
+                                <button mat-icon-button style="position: absolute;margin-left: 75px;margin-top: 25px;">
+                                    <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

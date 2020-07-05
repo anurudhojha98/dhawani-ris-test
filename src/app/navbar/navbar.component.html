@@ -1,0 +1,26 @@
+<p>
+    <mat-toolbar>
+        <span style="margin-left: 130px;"><img src="assets/images/avatar.svg" width="75px" height="75px"></span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button routerLink='/dashboard/home'>Home</button>
+        <span class="space-padd"></span>
+        <button mat-icon-button routerLink='/dashboard/state'>State</button>
+        <span class="space-padd"></span>
+        <button mat-icon-button routerLink='/dashboard/district'>District</button>
+        <span class="space-padd"></span>
+        <button mat-icon-button routerLink='/dashboard/child'>Child</button>
+        <span class="space-padd"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>person</mat-icon>Profile
+            </button>
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon>Logout
+            </button>
+        </mat-menu>
+        <span class="space-padd"></span>
+    </mat-toolbar>
+</p>

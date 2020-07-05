@@ -1,0 +1,69 @@
+<div fxLayout="row" fxLayoutAlign="center" style="text-align: center;">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <p style="position: absolute;">
+                <button mat-icon-button routerLink='/dashboard/child'>
+                    <mat-icon style="color: green;">arrow_back</mat-icon>
+                </button>
+            </p>
+            <p style="padding-left: 80px; font-weight: bold;font-size: large;color: green;">ADD CHILD</p>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="addChildForm" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="standard" style="width: 270px;">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="name" required>
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 270px;">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dob" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 270px;">
+                    <mat-label>Sex</mat-label>
+                    <mat-select name="food" formControlName="sex" required>
+                        <mat-option *ngFor="let gender of genderList" [value]="gender.value">
+                            {{gender.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 270px;">
+                    <mat-label>Father's Name</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="fatherName" required>
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 270px;">
+                    <mat-label>Mother's Name</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="motherName" required>
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 270px;">
+                    <mat-label>City</mat-label>
+                    <mat-select name="food" formControlName="city" required>
+                        <mat-option *ngFor="let city of cities" [value]="city.value">
+                            {{city.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 270px;">
+                    <mat-label>State</mat-label>
+                    <mat-select name="food" formControlName="state" required>
+                        <mat-option *ngFor="let state of states" [value]="state.value">
+                            {{state.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <!-- <td-file-input class="push-left-sm push-right-sm" #fileInput [(ngModel)]="files" multiple=false>
+                    <mat-icon>folder</mat-icon>
+                    <span class="text-upper">Browse...</span>
+                </td-file-input>
+                <span>{{fileName}}</span> -->
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" aria-label="SUBMIT" [disabled]="!addChildForm.valid"
+                class="submitBtn" (click)="onSubmit()">
+                SUBMIT
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
