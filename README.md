@@ -8,9 +8,11 @@
 I have added two default user in db.You can login using that.
 
 username:dev@ris.co.in
+
 password:Anurudh@123
 
-username:admin@ris.co.in  
+username:admin@ris.co.in
+
 password:Anurudh@123
 
 
