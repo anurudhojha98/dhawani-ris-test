@@ -37,18 +37,19 @@
                     <input matInput placeholder="Placeholder" formControlName="motherName" required>
                 </mat-form-field>
                 <mat-form-field appearance="standard" style="width: 270px;">
-                    <mat-label>City</mat-label>
-                    <mat-select name="food" formControlName="city" required>
-                        <mat-option *ngFor="let city of cities" [value]="city.value">
-                            {{city.viewValue}}
+                    <mat-label>State</mat-label>
+                    <mat-select name="state" formControlName="state" (selectionChange)="selectStates($event)" required>
+                        <mat-option *ngFor="let state of states" [value]="state.value">
+                            {{state.viewValue}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="standard" style="width: 270px;">
-                    <mat-label>State</mat-label>
-                    <mat-select name="food" formControlName="state" required>
-                        <mat-option *ngFor="let state of states" [value]="state.value">
-                            {{state.viewValue}}
+                    <mat-label>District</mat-label>
+                    <mat-select name="district" formControlName="districtId" (selectionChange)="selectDistrict($event)"
+                        required>
+                        <mat-option *ngFor="let district of districtList" [value]="district.value">
+                            {{district.viewValue}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

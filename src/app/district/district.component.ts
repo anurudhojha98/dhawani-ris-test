@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { DistrictService } from '../services/district/district.service';
+import { StateService } from '../services/state/state.service';
 
 @Component({
   selector: 'app-district',
@@ -10,22 +12,38 @@ export class DistrictComponent implements OnInit {
 
   public statesList = [];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private stateService: StateService, private districtService: DistrictService) { }
   public addDistrictForm = this.fb.group({
     state: ['', Validators.required],
     district: ['', Validators.required],
   });
-  public states = [
-    { value: '1', viewValue: 'Uttar Pradesh' },
-    { value: '2', viewValue: 'New Delhi' },
-    { value: '3', viewValue: 'Maharashtra' },
-  ];
+  public states = [];
   public stateDistrictList = [];
   public ngOnInit(): void {
+    this.getStateList();
+    this.getStateDistrictList();
   }
 
   public onSubmit() {
-    console.log(this.addDistrictForm.value);
-    this.stateDistrictList.push(this.addDistrictForm.value);
+    this.districtService.saveDistrict(this.addDistrictForm.value).subscribe((res) => {
+      this.stateDistrictList.push(res.data);
+    }, (err) => {
+      console.log(err.message);
+    });
+    this.addDistrictForm.reset();
+  }
+  public getStateList() {
+    this.stateService.getStateList().subscribe((res) => {
+      this.states = res.data;
+    }, (err) => {
+      console.log(err.message);
+    });
+  }
+  public getStateDistrictList() {
+    this.districtService.getDistrictList().subscribe((res) => {
+      this.stateDistrictList = res.data;
+    }, (err) => {
+      console.log(err);
+    });
   }
 }

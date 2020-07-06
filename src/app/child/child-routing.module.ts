@@ -8,7 +8,7 @@ import { ViewChildComponent } from './view-child/view-child.component';
 const routes: Routes = [
   { path: '', component: ChildComponent },
   { path: 'add-child', component: AddChildComponent },
-  { path: 'view-child', component: ViewChildComponent },
+  { path: 'view-child/:id', component: ViewChildComponent },
 ];
 
 @NgModule({

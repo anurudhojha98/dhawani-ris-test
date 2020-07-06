@@ -6,39 +6,42 @@
                     <mat-icon style="color: green;">arrow_back</mat-icon>
                 </button>
             </p>
-            <div mat-card-avatar class="example-header-image"></div>
+            <div mat-card-avatar class="example-header-image">
+                <img src='assets/images/avatar.svg' width="150px" height="100px">
+            </div>
+
         </mat-card-header>
         <mat-card-content style="padding-left: 50px;">
             <div fxLayout="row">
                 <div class="" fxFlex="100%" fxLayoutGap="10px">
                     <div fxFlex="33%">
-                        <h4> Name&nbsp;:&nbsp;Anurudh Ojha</h4>
+                        <h4> Name&nbsp;:&nbsp;{{userDetail?.name}}</h4>
                     </div>
                     <div fxFlex="33%">
-                        <h4>Sex&nbsp;:&nbsp;Male</h4>
+                        <h4>Sex&nbsp;:&nbsp;{{userDetail?.sex}}</h4>
                     </div>
                     <div fxFlex="33%">
-                        <h4>Date Of Birth&nbsp;:&nbsp;25/07/1998</h4>
-                    </div>
-                </div>
-            </div>
-            <div fxLayout="row">
-                <div class="" fxFlex="100%" fxLayoutGap="10px">
-                    <div fxFlex="33%">
-                        <h4> Father's Name&nbsp;:&nbsp;Ashok Kumar Ojha</h4>
-                    </div>
-                    <div fxFlex="33%">
-                        <h4>Mother's Name&nbsp;:&nbsp;Asha Ojha</h4>
-                    </div>
-                    <div fxFlex="33%">
-                        <h4>State&nbsp;:&nbsp;Uttar Pradesh</h4>
+                        <h4>Date Of Birth&nbsp;:&nbsp;{{userDetail?.dob}}</h4>
                     </div>
                 </div>
             </div>
             <div fxLayout="row">
                 <div class="" fxFlex="100%" fxLayoutGap="10px">
                     <div fxFlex="33%">
-                        <h4>City&nbsp;:&nbsp;Amethi</h4>
+                        <h4> Father's Name&nbsp;:&nbsp;{{userDetail?.fatherName}}</h4>
+                    </div>
+                    <div fxFlex="33%">
+                        <h4>Mother's Name&nbsp;:&nbsp;{{userDetail?.motherName}}</h4>
+                    </div>
+                    <div fxFlex="33%">
+                        <h4>State&nbsp;:&nbsp;{{userDetail?.state}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div class="" fxFlex="100%" fxLayoutGap="10px">
+                    <div fxFlex="33%">
+                        <h4>District&nbsp;:&nbsp;{{userDetail?.district}}</h4>
                     </div>
                 </div>
             </div>

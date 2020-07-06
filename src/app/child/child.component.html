@@ -4,7 +4,9 @@
         CHILD</button>
 </div>
 <div class="mat-elevation-z8" style="width: 80%;margin-left: 159px;">
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons=false></mat-paginator>
+    <mat-paginator [length]="pageLength" [pageSizeOptions]="[5, 10, 20]" (page)="getServerData($event)"
+        showFirstLastButtons=false>
+    </mat-paginator>
     <table mat-table [dataSource]="dataSource">
 
         <!--- Note that these columns can be defined in any order.
@@ -12,42 +14,43 @@
         <!-- Position Column -->
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="sex">
             <th mat-header-cell *matHeaderCellDef> Sex </th>
-            <td mat-cell *matCellDef="let element"> {{element.sex}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.sex}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="dob">
             <th mat-header-cell *matHeaderCellDef> Date Of Birth </th>
-            <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.dob}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="fatherName">
             <th mat-header-cell *matHeaderCellDef> Father's Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.fatherName}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.fatherName}} </td>
         </ng-container>
         <ng-container matColumnDef="motherName">
             <th mat-header-cell *matHeaderCellDef> Mother's Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.motherName}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.motherName}} </td>
         </ng-container>
         <ng-container matColumnDef="state">
             <th mat-header-cell *matHeaderCellDef> State </th>
-            <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.state}} </td>
         </ng-container>
         <ng-container matColumnDef="district">
             <th mat-header-cell *matHeaderCellDef> District </th>
-            <td mat-cell *matCellDef="let element"> {{element.district}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.district}} </td>
         </ng-container>
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef class="col-align-center"> Action </th>
             <td mat-cell *matCellDef="let element" class="col-align-center">
-                <button mat-stroked-button routerLink='/dashboard/child/view-child'>View</button>
+                <button mat-stroked-button routerLink='/dashboard/child/view-child'
+                    (click)="onView(element.id)">View</button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

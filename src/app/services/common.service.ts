@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class CommonFunction {
 
   public showLogger = true;
+  public data;
   constructor() { }
   public setIsShowLogger(value: any): any {
     this.showLogger = value;
@@ -82,6 +83,18 @@ export class CommonFunction {
 
   public setIsToShowToaster(value: any): any {
     this.showLogger = value;
+  }
+
+  public addDataToLocalStorage(key: any, value: any) {
+    localStorage.setItem(key, value);
+  }
+
+  public setData(data) {
+    this.data = data;
+  }
+
+  public getData() {
+    return this.data;
   }
 
 }
