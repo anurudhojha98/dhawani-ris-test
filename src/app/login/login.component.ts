@@ -52,13 +52,12 @@ export class LoginComponent implements OnInit {
         }
       },
       (errors) => {
-        const parseErr = JSON.parse(errors);
-        this.snackBar.open(parseErr.error[0].username, Constants.SNACK_BAR_ERR_MESSAGE_ACTION, {
+        const err = errors.error[0].username || errors.error[0].password || 'Invalid input.';
+        this.snackBar.open(err, Constants.SNACK_BAR_ERR_MESSAGE_ACTION, {
           duration: Constants.SNACK_BAR_MESSAGE_DURATION,
         });
-        console.log(parseErr);
       },
     );
-    // this.loginForm.reset();
+    this.loginForm.reset();
   }
 }
