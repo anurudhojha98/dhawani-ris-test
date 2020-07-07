@@ -74,9 +74,11 @@ export class AddChildComponent implements OnInit {
 
   public selectStates(event) {
     this.districtService.getDistrictByStateId(event.value).subscribe((res) => {
-      this.districtList = [];
-      for (const data of res.data) {
-        this.districtList.push({ value: data.id, viewValue: data.districtName });
+      if (res.data) {
+        this.districtList = [];
+        for (const data of res.data) {
+          this.districtList.push({ value: data.id, viewValue: data.districtName });
+        }
       }
     }, (err) => {
       console.log(err.message);

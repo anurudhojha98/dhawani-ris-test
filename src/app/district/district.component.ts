@@ -26,7 +26,9 @@ export class DistrictComponent implements OnInit {
 
   public onSubmit() {
     this.districtService.saveDistrict(this.addDistrictForm.value).subscribe((res) => {
-      this.stateDistrictList.push(res.data);
+      if (res.data) {
+        this.getStateDistrictList();
+      }
     }, (err) => {
       console.log(err.message);
     });

@@ -21,11 +21,13 @@ export class StateComponent implements OnInit {
 
   public addState() {
     this.stateService.saveState(this.addStateForm.value).subscribe((res) => {
+      if (res.data) {
+        this.getState();
+      }
       console.log(res);
     }, (err) => {
       console.log(err.message);
     });
-    this.statesList.push(this.addStateForm.value);
     this.addStateForm.reset();
   }
   public getState() {
